@@ -11,8 +11,12 @@ make = str(sys.argv[2])
 
 print('PATH: \"{path}\"'.format(path=path))
 
-with open(path, 'r') as file:
-    text = file.readlines()
+try:
+    with open(path, 'r') as file:
+        text = file.readlines()
+except FileNotFoundError:
+    print('Error: File Not Found')
+    exit()
 
 with open('output.txt', 'w') as file:
     for line in text:
