@@ -11,7 +11,7 @@ def Crypto_Encode(text):
     for let in text:
         res += chr(random.randint(33, 126)) + str.translate(let, enc) + "—"
 
-    print('Result: {res}'.format(res=res))
+    print('Process: Шифрование\nResult: {res}'.format(res=res))
     return res
 
 
@@ -27,8 +27,8 @@ def Crypto_Decode(text):
 
     for let in text:
         if (let == ""):
-            break
+            pass
         res += str.translate(let[1:2], dec)
 
-    print('Result: {res}'.format(res=res))
+    print('Process: Расшифрование\nResult: {res}'.format(res=res))
     return res

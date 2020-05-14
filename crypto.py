@@ -1,8 +1,25 @@
 import sys
 import crypto_lib
 
-i = 1
-while (i < len(sys.argv)):
-    text = crypto_lib.Crypto_Encode(sys.argv[i])
-    crypto_lib.Crypto_Decode(text)
-    i += 1
+if (sys.argv[1] == ""):
+    print('Error: Wrong Argument')
+    exit()
+else:
+    path = sys.argv[1]
+
+make = str(sys.argv[2])
+
+print('PATH: \"{path}\"'.format(path=path))
+
+with open(path, 'r') as file:
+    text = file.readlines()
+
+with open('output.txt', 'w') as file:
+    for line in text:
+        if (make == 'enc'):
+            file.write(crypto_lib.Crypto_Encode(line))
+        elif (make == 'dec'):
+            file.write(crypto_lib.Crypto_Decode(line))
+        else:
+            print('Error: Wrong Argument')
+            exit()
